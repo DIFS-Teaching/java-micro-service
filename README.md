@@ -2,4 +2,4 @@
 
 (c) Radek Burget, 2021
 
-An example Java microservice with metrics and a health check.
+An example Java microservice with metrics and health check, OpenAPI documentation and config injection.
