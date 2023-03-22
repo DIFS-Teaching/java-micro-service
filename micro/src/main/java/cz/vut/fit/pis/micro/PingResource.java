@@ -63,8 +63,8 @@ public class PingResource {
     @Path("q")
     @Produces(MediaType.APPLICATION_JSON)
     @Gauge(unit = "items")
-    public ResultMessage queueSize() {
-        return new ResultMessage("ok", "Queue is " + queue);
+    public int queueSize() {
+        return queue;
     }
 
 }
