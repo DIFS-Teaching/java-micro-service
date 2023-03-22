@@ -8,5 +8,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>micro</module>
+    <module>client</module>
   </modules>
 </project>
