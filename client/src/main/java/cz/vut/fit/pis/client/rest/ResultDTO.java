@@ -3,7 +3,7 @@
  *
  * Created on 24. 3. 2022, 11:05:26 by burgetr
  */
-package cz.vut.fit.pis.client;
+package cz.vut.fit.pis.client.rest;
 
 
 /**

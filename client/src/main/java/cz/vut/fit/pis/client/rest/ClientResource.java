@@ -1,5 +1,6 @@
-package cz.vut.fit.pis.client;
+package cz.vut.fit.pis.client.rest;
 
+import cz.vut.fit.pis.client.service.QueueLogic;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -12,17 +13,13 @@ import jakarta.ws.rs.core.MediaType;
 public class ClientResource {
 
     @Inject
-    private QueueClient queueClient;
+    private QueueLogic queueLogic;
     
     @GET
     @Path("q4")
     @Produces(MediaType.APPLICATION_JSON)
     public ResultDTO queueFourItems() {
-        queueClient.queueUp();
-        queueClient.queueUp();
-        queueClient.queueUp();
-        QueueDTO lastResult = queueClient.queueUp();
-        return new ResultDTO(queueClient.queueLength(), lastResult.getMessage());
+        return queueLogic.queueItems(4);
     }
 
 }

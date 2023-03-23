@@ -1,4 +1,4 @@
-package cz.vut.fit.pis.client;
+package cz.vut.fit.pis.client.rest;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

@@ -3,7 +3,7 @@
  *
  * Created on 22. 3. 2023, 14:28:23 by burgetr
  */
-package cz.vut.fit.pis.client;
+package cz.vut.fit.pis.client.queue;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
