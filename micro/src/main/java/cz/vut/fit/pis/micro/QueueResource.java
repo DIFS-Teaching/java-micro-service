@@ -16,6 +16,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  *
@@ -39,9 +41,16 @@ public class QueueResource {
     @Operation(operationId = "queueUp", summary = "Increments the queue length")
     @APIResponse(responseCode = "200", description = "Queue incremented",
             content = @Content(schema = @Schema(ref = "ResultMessage")))
-    public ResultMessage queueUp_metered() {
-        queue++;
-        return new ResultMessage("ok", "Metered queue up, hello " + name);
+    public Response queueUp_metered() {
+        if (queue < 60)
+        {
+            queue++;
+        	return Response.ok(new ResultMessage("ok", "Metered queue up, hello " + name)).build();
+        }
+        else
+        	return Response.status(Status.INTERNAL_SERVER_ERROR)
+        			.entity(new ResultMessage("error", "Queue overflow"))
+        			.build();
     }
     
     @GET
