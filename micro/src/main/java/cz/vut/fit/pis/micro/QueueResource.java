@@ -18,15 +18,13 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 /**
- * See
- * https://www.adam-bien.com/roller/abien/entry/microprofile_metered_vs_timed
  *
  * @author burgetr
  */
 @ApplicationScoped
-@Path("ping")
-@Tag(name = "ping", description = "Simple ping resource")
-public class PingResource {
+@Path("queue")
+@Tag(name = "ping", description = "Simple queue resource")
+public class QueueResource {
 
     @Inject
     @ConfigProperty(name="name", defaultValue="Nobody")
@@ -37,25 +35,25 @@ public class PingResource {
     @GET
     @Path("m")
     @Produces(MediaType.APPLICATION_JSON)
-    @Metered(name = "pingMeter")
-    @Operation(operationId = "pingUp", summary = "Increments the queue length")
+    @Metered(name = "queueMeter")
+    @Operation(operationId = "queueUp", summary = "Increments the queue length")
     @APIResponse(responseCode = "200", description = "Queue incremented",
             content = @Content(schema = @Schema(ref = "ResultMessage")))
-    public ResultMessage ping_metered() {
+    public ResultMessage queueUp_metered() {
         queue++;
-        return new ResultMessage("ok", "Metered ping, hello " + name);
+        return new ResultMessage("ok", "Metered queue up, hello " + name);
     }
     
     @GET
     @Path("t")
     @Produces(MediaType.APPLICATION_JSON)
-    @Timed(name = "pingTimer")
-    @Operation(operationId = "pingDown", summary = "Decrements the queue length")
+    @Timed(name = "queueTimer")
+    @Operation(operationId = "queueDown", summary = "Decrements the queue length")
     @APIResponse(responseCode = "200", description = "Queue decremented",
             content = @Content(schema = @Schema(ref = "ResultMessage")))
-    public ResultMessage ping_timed() {
+    public ResultMessage queueDown_timed() {
         queue--;
-        return new ResultMessage("ok", "Timed ping, hello " + name);
+        return new ResultMessage("ok", "Timed queue down, hello " + name);
     }
     
     @GET

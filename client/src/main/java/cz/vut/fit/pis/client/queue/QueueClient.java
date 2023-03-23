@@ -17,7 +17,7 @@ import jakarta.ws.rs.core.MediaType;
  * @author burgetr
  */
 @RegisterRestClient(configKey = "QueueService", baseUri = "http://localhost:9080/micro/")
-@Path("/api/ping")
+@Path("/api/queue")
 public interface QueueClient
 {
 
