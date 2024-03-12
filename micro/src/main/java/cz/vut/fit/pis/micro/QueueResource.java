@@ -1,8 +1,8 @@
 package cz.vut.fit.pis.micro;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Gauge;
-import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -37,7 +37,7 @@ public class QueueResource {
     @GET
     @Path("m")
     @Produces(MediaType.APPLICATION_JSON)
-    @Metered(name = "queueMeter")
+    @Counted(name = "queueCount")
     @Operation(operationId = "queueUp", summary = "Increments the queue length")
     @APIResponse(responseCode = "200", description = "Queue incremented",
             content = @Content(schema = @Schema(ref = "ResultMessage")))
